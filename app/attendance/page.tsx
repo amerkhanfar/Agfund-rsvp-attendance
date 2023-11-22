@@ -28,19 +28,21 @@ export default function DemoPage() {
       Authorization: `Bearer ${apiKey}`,
     },
     params: {
-      count: 100,
+      count: 200,
     },
   };
   const getData = async () => {
     try {
-      console.log(process.env.NEXT_PUBLIC_API_KEY);
       const response = await axios.get(apiUrl, axiosConfig);
       console.log(response.data.members);
       const members = response.data.members;
       const filteredMembers = members.filter((member: { tags: any[] }) => {
-        return member.tags.some(
-          (tag: { name: string }) =>
-            tag.name === "agfund-completed-invite-form",
+        return (
+          member.tags.some(
+            (tag: { name: string }) =>
+              tag.name === "agfund-completed-invite-form",
+          ) &&
+          !member.tags.some((tag: { name: string }) => tag.name === "test-dev")
         );
       });
 
@@ -64,6 +66,18 @@ export default function DemoPage() {
       setData(transformedData);
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const deleteData = async (data: any) => {
+    console.log(data);
+    try {
+      await axios.delete(
+        `https://us21.api.mailchimp.com/3.0/lists/12a63504d0/members/${data.id}`,
+      ),
+        axiosConfig;
+    } catch (error) {
+      console.log(error);
     }
   };
   useEffect(() => {
