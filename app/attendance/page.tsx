@@ -20,7 +20,7 @@ export default function DemoPage() {
   const [data, setData] = useState<any>([]);
   const apiKey = process.env.NEXT_PUBLIC_API_KEY?.toString();
   const audienceId = "12a63504d0";
-  const tagId = "agfund-audience-2"; // Replace with the actual tag ID
+  const tagId = "agfund-completed-invite-form"; // Replace with the actual tag ID
   const dataCenter = "us21";
   const apiUrl = "/api/lists/12a63504d0/members";
   const axiosConfig = {
@@ -37,15 +37,27 @@ export default function DemoPage() {
       const response = await axios.get(apiUrl, axiosConfig);
       console.log(response.data.members);
       const members = response.data.members;
-      // const membersWithTag = members.filter(
-      //   (member: { tags: string | string[] }) => member.tags.includes(tagId),
-      // );
-      const transformedData = members.map(
-        (item: { id: any; full_name: any; email_address: any }) => {
+      const filteredMembers = members.filter((member: { tags: any[] }) => {
+        return member.tags.some(
+          (tag: { name: string }) =>
+            tag.name === "agfund-completed-invite-form",
+        );
+      });
+
+      console.log(filteredMembers);
+
+      const transformedData = filteredMembers.map(
+        (item: {
+          id: any;
+          full_name: any;
+          email_address: any;
+          merge_fields: any;
+        }) => {
           return {
             id: item.id,
             name: item.full_name,
             email: item.email_address,
+            org: item.merge_fields.LNAME,
           };
         },
       );
