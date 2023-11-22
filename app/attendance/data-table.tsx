@@ -66,7 +66,10 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
-      <div className='flex items-center py-4 w-screen justify-center'>
+      <div className='flex flex-col items-center py-4 w-screen justify-center gap-10'>
+        <h1 style={{ fontSize: "20px" }} className='heading'>
+          RSVP Attendees
+        </h1>
         <Input
           placeholder='Search...'
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
@@ -77,7 +80,7 @@ export function DataTable<TData, TValue>({
         />
       </div>
 
-      <div className='rounded-md border'>
+      <div className='rounded-md border flex items-center w-screen'>
         <Table>
           <TableHeader style={{ background: "#ad9d8d" }}>
             {table.getHeaderGroups().map((headerGroup) => (

@@ -18,7 +18,7 @@ async function getData(): Promise<Payment[]> {
 
 export default function DemoPage() {
   const [data, setData] = useState<any>([]);
-  const apiKey = "526c633e5abd8c923fb27eeb88245c81-us21";
+  const apiKey = "96eeeffc08ca3b9cd5956c730c36cbc2-us21";
   const audienceId = "12a63504d0";
   const tagId = "agfund-audience-2"; // Replace with the actual tag ID
   const dataCenter = "us21";
@@ -28,7 +28,7 @@ export default function DemoPage() {
       Authorization: `Bearer ${apiKey}`,
     },
     params: {
-      count: 500,
+      count: 100,
     },
   };
   const getData = async () => {
@@ -61,8 +61,8 @@ export default function DemoPage() {
     <div className=' '>
       <div className='containers'>
         <img src='/Prize-logo.png' alt='prize logo' width={120} height={200} />
-        <h1 className='heading'>RSVP Attendees</h1>
-        <img src='/Agfund-Logo.png' alt='prize logo' width={120} height={200} />
+
+        <img src='/Agfund-logo.png' alt='prize logo' width={120} height={200} />
       </div>
       <DataTable columns={columns} data={data} />
     </div>
