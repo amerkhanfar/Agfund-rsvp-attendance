@@ -18,7 +18,7 @@ async function getData(): Promise<Payment[]> {
 
 export default function DemoPage() {
   const [data, setData] = useState<any>([]);
-  const apiKey = "96eeeffc08ca3b9cd5956c730c36cbc2-us21";
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY?.toString();
   const audienceId = "12a63504d0";
   const tagId = "agfund-audience-2"; // Replace with the actual tag ID
   const dataCenter = "us21";
@@ -33,10 +33,14 @@ export default function DemoPage() {
   };
   const getData = async () => {
     try {
+      console.log(process.env.NEXT_PUBLIC_API_KEY);
       const response = await axios.get(apiUrl, axiosConfig);
-
       console.log(response.data.members);
-      const transformedData = response.data.members.map(
+      const members = response.data.members;
+      // const membersWithTag = members.filter(
+      //   (member: { tags: string | string[] }) => member.tags.includes(tagId),
+      // );
+      const transformedData = members.map(
         (item: { id: any; full_name: any; email_address: any }) => {
           return {
             id: item.id,
