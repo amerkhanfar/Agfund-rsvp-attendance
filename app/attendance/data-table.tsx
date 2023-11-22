@@ -82,7 +82,7 @@ export function DataTable<TData, TValue>({
 
       <div className='rounded-md border flex items-center w-screen'>
         <Table>
-          <TableHeader style={{ background: "#ad9d8d" }}>
+          <TableHeader style={{ background: "#a7742c" }}>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {

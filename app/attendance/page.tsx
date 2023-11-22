@@ -64,9 +64,33 @@ export default function DemoPage() {
   return (
     <div className=' '>
       <div className='containers'>
-        <img src='/Prize-logo.png' alt='prize logo' width={120} height={200} />
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            backgroundImage: 'url("/1.png")',
+            width: "80vw",
+            height: "20vh",
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
+            zIndex: 1,
+          }}></div>
+        <img
+          src='/Prize-logo.png'
+          alt='prize logo'
+          width={120}
+          height={200}
+          style={{ zIndex: "2" }}
+        />
 
-        <img src='/Agfund-logo.png' alt='prize logo' width={120} height={200} />
+        <img
+          src='/Agfund-logo.png'
+          alt='prize logo'
+          width={120}
+          height={200}
+          style={{ zIndex: "2" }}
+        />
       </div>
       <DataTable columns={columns} data={data} />
     </div>

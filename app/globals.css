@@ -4,7 +4,7 @@
 
 body {
   overflow-x: hidden;
-  background: #f6f1e9;
+  background: #f2e8d8;
 }
 
 @layer base {
@@ -83,7 +83,7 @@ body {
 .containers {
   display: flex;
   width: 100vw;
-  background: #f6f1e9;
+  background: #f2e8d8;
   justify-content: space-between;
   align-items: center;
   color: black;
