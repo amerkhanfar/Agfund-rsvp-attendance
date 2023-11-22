@@ -89,7 +89,9 @@ body {
   color: black;
   padding: 0px 10px;
 }
-
+.text-sm {
+  font-size: 0.675rem;
+}
 .bb {
   background-color: #8f1838;
   margin-top: 100px;
@@ -105,8 +107,23 @@ body {
   font-size: 15px;
 }
 
+.element {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-image: url("/1.png");
+  width: 80vw;
+  height: 25vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
 @media only screen and (min-width: 550px) {
   .heading {
     font-size: 23px;
+  }
+  .element {
+    height: 50vh;
   }
 }

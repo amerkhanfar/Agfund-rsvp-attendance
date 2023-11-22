@@ -76,18 +76,7 @@ export default function DemoPage() {
   return (
     <div className=' '>
       <div className='containers'>
-        <div
-          style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            backgroundImage: 'url("/1.png")',
-            width: "80vw",
-            height: "20vh",
-            backgroundSize: "contain",
-            backgroundRepeat: "no-repeat",
-            zIndex: 1,
-          }}></div>
+        <div className='element'></div>
         <img
           src='/Prize-logo.png'
           alt='prize logo'
