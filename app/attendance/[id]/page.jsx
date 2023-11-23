@@ -2,14 +2,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Oval } from "react-loader-spinner";
+import crypto from "crypto";
 
 const page = ({ params: { id } }) => {
   const [tag, setTag] = useState();
+  const email = decodeURIComponent(id);
+  const subscriberHash = crypto.createHash("md5").update(email).digest("hex");
   const apiKey = process.env.NEXT_PUBLIC_API_KEY?.toString();
   const audienceId = "12a63504d0";
   const tagId = "agfund-completed-invite-form";
   const dataCenter = "us21";
-  const apiUrl = `/api/lists/12a63504d0/members/${id}`;
+  const apiUrl = `/api/lists/12a63504d0/members/${subscriberHash}`;
   const axiosConfig = {
     headers: {
       Authorization: `Bearer ${apiKey}`,
@@ -20,7 +23,7 @@ const page = ({ params: { id } }) => {
       const response = await axios.get(apiUrl, axiosConfig);
 
       // Handle the response
-      console.log("Member data:", response.data.tags);
+      console.log("Member data:", response.data);
       const tags = response.data.tags;
       tags.some((item) => item.name === "test-dev")
         ? setTag(true)
