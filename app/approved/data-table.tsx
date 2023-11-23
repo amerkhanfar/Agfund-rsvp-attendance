@@ -68,9 +68,8 @@ export function DataTable<TData, TValue>({
     <div>
       <div className='flex flex-col items-center py-4 w-screen justify-center gap-10'>
         <h1 style={{ fontSize: "20px" }} className='heading'>
-          RSVP Attendees
+          Approved Attendess
         </h1>
-
         <div
           style={{
             width: "100%",
@@ -87,7 +86,7 @@ export function DataTable<TData, TValue>({
             className='max-w-sm'
           />
           <Link
-            href={"/approved"}
+            href={"/attended"}
             style={{
               position: "absolute",
               right: "0",
@@ -101,7 +100,7 @@ export function DataTable<TData, TValue>({
               color: "white",
               cursor: "pointer",
             }}>
-            View Approved
+            View Attended
           </Link>
         </div>
       </div>

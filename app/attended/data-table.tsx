@@ -1,6 +1,7 @@
 "use client";
 import * as React from "react";
 import Link from "next/link";
+
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -68,9 +69,8 @@ export function DataTable<TData, TValue>({
     <div>
       <div className='flex flex-col items-center py-4 w-screen justify-center gap-10'>
         <h1 style={{ fontSize: "20px" }} className='heading'>
-          RSVP Attendees
+          Attendance
         </h1>
-
         <div
           style={{
             width: "100%",

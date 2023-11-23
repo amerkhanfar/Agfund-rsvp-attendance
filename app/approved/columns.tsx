@@ -97,11 +97,7 @@ export const columns: ColumnDef<Payment>[] = [
       return (
         <div>
           <Button
-            onClick={async () => {
-              // console.log(row.original.id);
-              await updateTag(row.original.id);
-              location.reload();
-            }}
+            disabled
             style={{
               background: "#a7742c",
               width: "80px",
@@ -114,7 +110,7 @@ export const columns: ColumnDef<Payment>[] = [
             }}
             variant='ghost'
             className='h-8 w-8 p-0'>
-            Accept
+            Approved
           </Button>
         </div>
       );

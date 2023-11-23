@@ -6,6 +6,7 @@ import crypto from "crypto";
 
 const page = ({ params: { id } }) => {
   const [tag, setTag] = useState();
+  const [info, setInfo] = useState();
   const email = decodeURIComponent(id);
   const subscriberHash = crypto.createHash("md5").update(email).digest("hex");
   const apiKey = process.env.NEXT_PUBLIC_API_KEY?.toString();
@@ -18,6 +19,20 @@ const page = ({ params: { id } }) => {
       Authorization: `Bearer ${apiKey}`,
     },
   };
+
+  const updateTag = async () => {
+    try {
+      await axios.post(
+        `/api/lists/12a63504d0/members/${subscriberHash}/tags`,
+        {
+          tags: [{ name: "attended", status: "active" }],
+        },
+        axiosConfig,
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const getMemberById = async () => {
     try {
       const response = await axios.get(apiUrl, axiosConfig);
@@ -25,6 +40,8 @@ const page = ({ params: { id } }) => {
       // Handle the response
       console.log("Member data:", response.data);
       const tags = response.data.tags;
+      setInfo(response.data);
+
       tags.some((item) => item.name === "test-dev")
         ? setTag(true)
         : setTag(false);
@@ -37,6 +54,7 @@ const page = ({ params: { id } }) => {
 
   useEffect(() => {
     getMemberById();
+    updateTag();
   }, []);
 
   if (tag === undefined) {
@@ -79,8 +97,11 @@ const page = ({ params: { id } }) => {
               flexDirection: "column",
               gap: "20px",
             }}>
-            <img src='/check.png' alt='' width={350} height={350} />
-            <div>Invited</div>
+            <div>Name: {info.full_name}</div>
+            <div>Email: {info.email_address}</div>
+            <div>Organization: {info.merge_fields.LNAME}</div>
+            <div>Position: {info.merge_fields.POSITION}</div>
+            <img src='/check.png' alt='' width={250} height={250} />
           </div>
         ) : (
           <div
@@ -94,8 +115,8 @@ const page = ({ params: { id } }) => {
               flexDirection: "column",
               gap: "20px",
             }}>
-            <img src='/x.png' alt='' width={350} height={350} />
-            <div>Not invited</div>
+            <img src='/x.png' alt='' width={250} height={250} />
+            <div>Not found</div>
           </div>
         )}
       </div>
