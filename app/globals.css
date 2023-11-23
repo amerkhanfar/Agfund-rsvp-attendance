@@ -112,8 +112,8 @@ body {
   left: 0;
   top: 0;
   background-image: url("/1.png");
-  width: 80vw;
-  height: 25vh;
+  width: 400px;
+  height: 100px;
   background-size: contain;
   background-repeat: no-repeat;
   z-index: 1;
