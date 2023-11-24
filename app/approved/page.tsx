@@ -39,7 +39,7 @@ export default function DemoPage() {
       const filteredMembers = members.filter((member: { tags: any[] }) => {
         return (
           member.tags.some(
-            (tag: { name: string }) =>
+            (tag: { name: string }, index) =>
               tag.name === "agfund-completed-invite-form",
           ) &&
           member.tags.some((tag: { name: string }) => tag.name === "test-dev")
@@ -49,14 +49,19 @@ export default function DemoPage() {
       console.log(filteredMembers);
 
       const transformedData = filteredMembers.map(
-        (item: {
-          id: any;
-          full_name: any;
-          email_address: any;
-          merge_fields: any;
-        }) => {
+        (
+          item: {
+            id: any;
+            full_name: any;
+            email_address: any;
+            merge_fields: any;
+          },
+          index: any,
+        ) => {
           return {
+            length: filteredMembers.length,
             id: item.id,
+            index: index + 1,
             name: item.full_name,
             email: item.email_address,
             org: item.merge_fields.LNAME,

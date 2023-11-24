@@ -73,6 +73,39 @@ export function DataTable<TData, TValue>({
         </h1>
         <div
           style={{
+            width: "90%",
+            position: "relative",
+            padding: "10px 5px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}>
+          <div
+            style={{
+              position: "absolute",
+              left: "0",
+              width: "20%",
+              display: "flex",
+              justifyContent: "space-between",
+            }}>
+            <div>Total : {data.length}</div>
+          </div>
+
+          <div className='contains-links'>
+            <Link href={"/attendance"} className='other'>
+              View RSVP Response
+            </Link>
+            <Link href={"/approved"} className='other'>
+              View Approved
+            </Link>
+            <Link href={"/attended"} className='other'>
+              View Attendance
+            </Link>
+          </div>
+        </div>
+
+        <div
+          style={{
             width: "100%",
             display: "flex",
             justifyContent: "center",
@@ -86,23 +119,6 @@ export function DataTable<TData, TValue>({
             }
             className='max-w-sm'
           />
-          <Link
-            href={"/approved"}
-            style={{
-              position: "absolute",
-              right: "0",
-              fontSize: "13px",
-              background: "#a7742c",
-              width: "120px",
-              display: "flex",
-              borderRadius: "7px",
-              padding: "10px 0px",
-              justifyContent: "center",
-              color: "white",
-              cursor: "pointer",
-            }}>
-            View Approved
-          </Link>
         </div>
       </div>
 
@@ -130,6 +146,7 @@ export function DataTable<TData, TValue>({
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
+                  style={{ borderBottom: "1px solid rgba(0,0,0,0.2)" }}
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}>
                   {row.getVisibleCells().map((cell) => (

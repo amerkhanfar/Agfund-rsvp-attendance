@@ -45,13 +45,18 @@ export default function DemoPage() {
       console.log(filteredMembers);
 
       const transformedData = filteredMembers.map(
-        (item: {
-          id: any;
-          full_name: any;
-          email_address: any;
-          merge_fields: any;
-        }) => {
+        (
+          item: {
+            id: any;
+            full_name: any;
+            email_address: any;
+            merge_fields: any;
+          },
+          index: any,
+        ) => {
           return {
+            length: filteredMembers.length,
+            index: index + 1,
             id: item.id,
             name: item.full_name,
             email: item.email_address,

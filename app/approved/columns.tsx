@@ -59,6 +59,10 @@ const updateTag = async (data: any) => {
 
 export const columns: ColumnDef<Payment>[] = [
   {
+    accessorKey: "index",
+    header: "#",
+  },
+  {
     accessorKey: "name",
     header: ({ column }) => {
       return (

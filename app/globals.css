@@ -7,6 +7,10 @@ body {
   background: #f2e8d8;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -136,6 +140,25 @@ body {
   z-index: 1;
 }
 
+.contains-links {
+  position: absolute;
+  right: 0;
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.other {
+  font-size: 8px;
+  background: #5c5c5c;
+  width: 90px;
+  display: flex;
+  border-radius: 7px;
+  padding: 10px 0px;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+}
 .bottom.confirm {
   height: 250px;
   width: 450px;
@@ -147,5 +170,11 @@ body {
   }
   .element {
     height: 50vh;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .contains-links {
+    width: 75%;
   }
 }
