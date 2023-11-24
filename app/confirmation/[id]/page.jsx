@@ -70,7 +70,8 @@ const page = ({ params: { id } }) => {
           flexDirection: "column",
           gap: "20px",
         }}>
-        <div className='element'></div>
+        <div className='element confirm'></div>
+        <div className='bottom confirm'></div>
         <Oval
           height={80}
           width={80}
