@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import Link from "next/link";
-
+import { Oval } from "react-loader-spinner";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -143,11 +143,28 @@ export function DataTable<TData, TValue>({
                 </TableRow>
               ))
             ) : (
-              <TableRow>
+              <TableRow
+                className='text-center'
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  width: "55vw",
+                }}>
                 <TableCell
                   colSpan={columns.length}
                   className='h-24 text-center'>
-                  No results.
+                  <Oval
+                    height={80}
+                    width={80}
+                    color='#a7742c'
+                    wrapperStyle={{}}
+                    wrapperClass=''
+                    visible={true}
+                    ariaLabel='oval-loading'
+                    secondaryColor='#ebac55'
+                    strokeWidth={2}
+                    strokeWidthSecondary={2}
+                  />
                 </TableCell>
               </TableRow>
             )}

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Oval } from "react-loader-spinner";
+import "../../globals.css";
 import crypto from "crypto";
 
 const page = ({ params: { id } }) => {
@@ -69,6 +70,7 @@ const page = ({ params: { id } }) => {
           flexDirection: "column",
           gap: "20px",
         }}>
+        <div className='element'></div>
         <Oval
           height={80}
           width={80}
@@ -86,6 +88,8 @@ const page = ({ params: { id } }) => {
   } else {
     return (
       <div>
+        <div className='element confirm'></div>
+        <div className='bottom confirm'></div>
         {tag ? (
           <div
             style={{
@@ -101,7 +105,7 @@ const page = ({ params: { id } }) => {
             <div>Email: {info.email_address}</div>
             <div>Organization: {info.merge_fields.LNAME}</div>
             <div>Position: {info.merge_fields.POSITION}</div>
-            <img src='/check.png' alt='' width={250} height={250} />
+            <img src='/check.png' alt='' width={100} height={100} />
           </div>
         ) : (
           <div
@@ -115,7 +119,9 @@ const page = ({ params: { id } }) => {
               flexDirection: "column",
               gap: "20px",
             }}>
-            <img src='/x.png' alt='' width={250} height={250} />
+            <div className='element confirm'></div>
+            <div className='bottom confirm'></div>
+            <img src='/x.png' alt='' width={100} height={100} />
             <div>Not found</div>
           </div>
         )}

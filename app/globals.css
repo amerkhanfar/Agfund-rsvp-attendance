@@ -119,6 +119,28 @@ body {
   z-index: 1;
 }
 
+.element.confirm {
+  height: 250px;
+  width: 450px;
+}
+
+.bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-image: url("/bottom.png");
+  width: 400px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.bottom.confirm {
+  height: 250px;
+  width: 450px;
+}
+
 @media only screen and (min-width: 550px) {
   .heading {
     font-size: 23px;
