@@ -28,7 +28,7 @@ export default function DemoPage() {
       Authorization: `Bearer ${apiKey}`,
     },
     params: {
-      count: 200,
+      count: 1000,
     },
   };
   const getData = async () => {
