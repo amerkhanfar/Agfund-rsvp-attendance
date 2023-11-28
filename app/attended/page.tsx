@@ -18,6 +18,7 @@ async function getData(): Promise<Payment[]> {
 
 export default function DemoPage() {
   const [data, setData] = useState<any>([]);
+  const [loading, setLoading] = useState(false);
   const apiKey = process.env.NEXT_PUBLIC_API_KEY?.toString();
   const audienceId = "12a63504d0";
   const tagId = "agfund-completed-invite-form"; // Replace with the actual tag ID
@@ -32,6 +33,7 @@ export default function DemoPage() {
     },
   };
   const getData = async () => {
+    setLoading(true);
     try {
       const response = await axios.get(apiUrl, axiosConfig);
       console.log(response.data.members);
@@ -65,8 +67,10 @@ export default function DemoPage() {
         },
       );
       setData(transformedData);
+      setLoading(false);
     } catch (error) {
       console.error(error);
+      setLoading(false);
     }
   };
 
@@ -108,7 +112,7 @@ export default function DemoPage() {
           style={{ zIndex: "2" }}
         />
       </div>
-      <DataTable columns={columns} data={data} />
+      <DataTable columns={columns} data={data} loading={loading} />
     </div>
   );
 }
