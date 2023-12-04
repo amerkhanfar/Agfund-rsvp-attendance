@@ -29,7 +29,7 @@ export default function DemoPage() {
       Authorization: `Bearer ${apiKey}`,
     },
     params: {
-      count: 1000,
+      count: 2000,
     },
   };
   const getData = async () => {
